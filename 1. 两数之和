@@ -21,3 +21,28 @@
 时间复杂度：O(n)， 我们只遍历了包含有 n 个元素的列表一次。在表中进行的每次查找只花费 O(1) 的时间。
 
 空间复杂度：O(n)， 所需的额外空间取决于哈希表中存储的元素数量，该表最多需要存储 n 个元素。"""
+
+
+nums = [1,2,3,4,5,6,7,8,9,10,6,5]
+target = 10
+output = [[0, 8], [1, 7], [2, 6], [3, 10], [4, 11]
+
+def twosum(nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        hashmap = {}
+        for index,num in enumerate(nums):
+            hashmap[num] = index
+
+        result = []
+
+        for index, num in enumerate(nums):
+            another_num = target - num
+            if another_num in hashmap:
+                result.append([index,hashmap[another_num]])
+                hashmap.pop(num)
+        print(result)
+        return None
